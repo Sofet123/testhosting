@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자동 SMS 전송</title>
     <script>
-        // URL에서 전화번호 추출 및 SMS 링크 생성
         window.onload = function() {
             // 현재 URL에서 전화번호를 추출
             const phoneNumber = window.location.pathname.replace('/', '');
+
+            // 전화번호가 없는 경우
+            if (!phoneNumber) {
+                document.body.innerHTML = '<p>유효한 전화번호를 입력하세요.</p>';
+                return; // 추가 작업을 중지
+            }
+
+            // 기본 메시지
             const message = "안녕하세요, 문의드립니다.";
 
             // SMS 앱을 여는 링크로 리디렉션
